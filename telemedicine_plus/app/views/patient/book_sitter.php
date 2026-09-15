@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../../config/db.php';
 
+
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'patient') {
     header("Location: index.php?route=login");
     exit;

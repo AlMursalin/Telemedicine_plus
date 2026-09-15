@@ -5,6 +5,9 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'sitter') {
     header("Location: login.php");
     exit;
 }
+
+
+
 $sitter_session = $_SESSION['user'];
 $success_msg = '';
 

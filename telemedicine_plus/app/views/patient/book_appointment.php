@@ -1,6 +1,7 @@
 <?php
 require_once 'db.php';
 
+
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'patient') {
     header("Location: login.php");
     exit;

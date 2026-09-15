@@ -5,6 +5,9 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+
+
+
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'sitter') {
     header("Location: index.php?route=login");
     exit;

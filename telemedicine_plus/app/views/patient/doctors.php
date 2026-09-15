@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../../../config/db.php';
 
+
+
 $doc_stmt = $db->prepare("SELECT id, name, specialty, consultation_fee FROM users WHERE role = 'doctor' ORDER BY name ASC");
 $doc_stmt->execute();
 $doctors = $doc_stmt->fetchAll();

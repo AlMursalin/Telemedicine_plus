@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../../../config/db.php';
 if (!isset($_SESSION['user'])) { header("Location: index.php?route=login"); exit; }
+
+
 $user = $_SESSION['user'];
 
 if (!isset($_SESSION['payment_items'])) {
