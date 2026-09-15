@@ -4,9 +4,13 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $host = 'localhost';
+
 $dbname = 'doctor_db';
+
 $username = 'root';
+
 $password = '';
+
 
 try {
     $db_doctor = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password, [

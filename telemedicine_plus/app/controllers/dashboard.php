@@ -1,3 +1,4 @@
+
 <?php
 if (!isset($db)) {
     require_once __DIR__ . '/../../../config/db.php';
@@ -6,6 +7,8 @@ if (!isset($db)) {
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'patient') {
     header("Location: index.php?route=login");
@@ -27,7 +30,7 @@ try {
     $stmt_s = $db->prepare("SELECT id, name, specialty, hourly_rate FROM users WHERE role = 'sitter' AND availability = 'Available' ORDER BY name ASC");
     $stmt_s->execute();
     $sitters = $stmt_s->fetchAll();
-} catch (Exception $e) {
+} catch (Exception $e)  {
     $sitters = [];
 }
 ?>
@@ -41,7 +44,7 @@ try {
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f4f6f9; color: #333; display: flex; min-height: 100vh; overflow-x: hidden; }
         
-        .top-navbar { position: fixed; top: 0; left: 0; right: 0; height: 65px; background: #1e40af; color: white; display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .top-navbar { position: fixed; top: 0; left: 0; right: 0; height: 65px; background: #1e40af; color: white; display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1);  }
         .top-logo { font-size: 20px; font-weight: bold; color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
         .top-nav-links { display: flex; gap: 25px; align-items: center; list-style: none; font-size: 14px; font-weight: 500; }
         .top-nav-links a { color: #e2e8f0; text-decoration: none; transition: color 0.2s; }

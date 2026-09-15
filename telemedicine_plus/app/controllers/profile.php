@@ -8,6 +8,7 @@ if (!isset($_SESSION['user'])) {
         'phone' => '+8801700000000',
         'address' => 'Dhaka, Bangladesh'
     ];
+
 }
 
 $success_message = '';

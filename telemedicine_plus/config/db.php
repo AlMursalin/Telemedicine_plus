@@ -3,6 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+
+
 $host = 'localhost';
 $dbname = 'telemedicine_plus';
 $username = 'root';
@@ -16,4 +18,5 @@ try {
 } catch (PDOException $e) {
     die("Database Connection Failed: " . $e->getMessage());
 }
+
 ?>

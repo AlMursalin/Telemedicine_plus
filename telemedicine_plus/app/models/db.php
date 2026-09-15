@@ -6,6 +6,8 @@ $dbname = 'telemedicine_plus';
 $username = 'root';
 $password = '';
 
+
+
 try {
     $db = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -13,7 +15,10 @@ try {
     ]);
 } catch (PDOException $e) {
     die("Database Connection Failed: " . $e->getMessage());
+
 }
+
+
 
 function require_login($allowed_roles = []) {
     if (!isset($_SESSION['user'])) {

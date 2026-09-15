@@ -8,9 +8,13 @@ if (!isset($_SESSION['user'])) {
         'phone' => '+8801700000000',
         'address' => 'Dhaka, Bangladesh'
     ];
+
 }
 
 $success_message = '';
+
+
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
     $new_name = trim($_POST['name']);
