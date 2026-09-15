@@ -46,6 +46,7 @@ if (!isset($doctor) && isset($_SESSION['user'])) {
         .btn-action:hover { background: #3730a3; }
     </style>
 </head>
+ 
 <body>
 
     <header class="top-navbar">

@@ -1,7 +1,8 @@
 <?php
-require_once __DIR__ . '/../../config/db.php';
+require_once 'db.php';
+
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'doctor') {
-    header("Location: index.php?route=login");
+    header("Location: login.php");
     exit;
 }
 $doctor = $_SESSION['user'];
@@ -30,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $stmt->execute([$appointment_id]);
     $appointment = $stmt->fetch();
+    
 }
 ?>
 <!DOCTYPE html>
@@ -81,10 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .alert-success { background: #dcfce7; color: #16a34a; padding: 12px; border-radius: 8px; font-weight: 600; margin-bottom: 20px; text-align: center; border: 1px solid #bbf7d0; }
     </style>
 </head>
+
 <body>
     <header class="top-navbar">
         <div class="top-logo-area">
-            <a href="index.php?route=home" class="top-logo">✚ Telemedicine++</a>
+            <a href="index.php" class="top-logo">✚ Telemedicine++</a>
             <span class="top-subtitle">Doctor Portal</span>
         </div>
     </header>
@@ -96,19 +99,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <span><?= htmlspecialchars($doctor['specialty']) ?></span>
         </div>
         
-        <?php $current_route = $_GET['route'] ?? ''; ?>
+        <?php $current_page = basename($_SERVER['PHP_SELF']); ?>
         <ul class="nav-menu">
-            <li class="nav-item"><a href="index.php?route=doctor_dashboard">📑 Dashboard</a></li>
-            <li class="nav-item"><a href="index.php?route=doctor_appointments">📅 Patient Appointments</a></li>
-            <li class="nav-item"><a href="index.php?route=medical_records">📁 Medical Records</a></li>
+            <li class="nav-item"><a href="doctor_dashboard.php" class="<?= $current_page == 'doctor_dashboard.php' ? 'active' : '' ?>">📑 Dashboard</a></li>
+            <li class="nav-item"><a href="doctor_appointments.php" class="<?= $current_page == 'doctor_appointments.php' ? 'active' : '' ?>">📅 Patient Appointments</a></li>
+            <li class="nav-item"><a href="doctor_prescriptions.php" class="<?= $current_page == 'doctor_prescriptions.php' ? 'active' : '' ?>">💊 Prescriptions</a></li>
+            <li class="nav-item"><a href="doctor_patients.php" class="<?= $current_page == 'doctor_patients.php' ? 'active' : '' ?>">👥 Patients</a></li>
+            <li class="nav-item"><a href="doctor_medical_records.php" class="<?= $current_page == 'doctor_medical_records.php' ? 'active' : '' ?>">📁 Medical Records</a></li>
+            <li class="nav-item"><a href="doctor_messages.php" class="<?= $current_page == 'doctor_messages.php' ? 'active' : '' ?>">✉️ Messages</a></li>
             <div class="sidebar-divider"></div>
-            <li class="nav-item"><a href="index.php?route=logout">🚪 Log Out</a></li>
+            <li class="nav-item"><a href="doctor_profile_setting.php" class="<?= $current_page == 'doctor_profile_setting.php' ? 'active' : '' ?>">⚙️ Profile Settings</a></li>
+            <li class="nav-item"><a href="logout.php">🚪 Log Out</a></li>
         </ul>
     </aside>
 
     <main class="main-content">
         <div class="header-row">
-            <a href="index.php?route=doctor_dashboard" class="btn-back">&larr; Back to Dashboard</a>
+            <a href="doctor_dashboard.php" class="btn-back">&larr; Back to Dashboard</a>
         </div>
 
         <?php if ($success_msg): ?><div class="alert-success"><?= $success_msg ?></div><?php endif; ?>
@@ -119,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="info-row"><label>Patient Name</label><span><?= htmlspecialchars($appointment['patient_name']) ?></span></div>
                 <div class="info-row"><label>Appointment Date</label><span><?= date("F j, Y", strtotime($appointment['appointment_date'])) ?></span></div>
                 <div class="info-row"><label>Time slot</label><span><?= date("h:i A", strtotime($appointment['appointment_time'])) ?></span></div>
-                <div class="info-row"><label>Fee</label><span>৳<?= number_format($appointment['fee'], 2) ?></span></div>
+                <div class="info-row"><label>Fee Paid</label><span>৳<?= number_format($appointment['fee'], 2) ?> via <?= strtoupper(htmlspecialchars($appointment['payment_method'])) ?></span></div>
             </div>
 
             <div class="panel">

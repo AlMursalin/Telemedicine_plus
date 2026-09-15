@@ -6,6 +6,7 @@ if (!isset($doctor) && isset($_SESSION['user'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Appointments | Telemedicine++</title>
@@ -50,6 +51,7 @@ if (!isset($doctor) && isset($_SESSION['user'])) {
         .btn-action:hover { background: #3730a3; }
     </style>
 </head>
+
 <body>
 
     <header class="top-navbar">

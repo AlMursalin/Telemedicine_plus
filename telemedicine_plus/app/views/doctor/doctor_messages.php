@@ -25,6 +25,7 @@ $doctor = $_SESSION['user'];
         .panel { background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
     </style>
 </head>
+ 
 <body>
     <header class="top-navbar"><div class="top-logo-area"><a href="index.php" class="top-logo">✚ Telemedicine++</a></div></header>
     <aside class="sidebar">

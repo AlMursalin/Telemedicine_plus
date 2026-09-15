@@ -74,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .alert-error { background: #fee2e2; color: #dc2626; padding: 12px; border-radius: 8px; font-weight: 600; margin-bottom: 20px; }
     </style>
 </head>
+ 
 <body>
     <header class="top-navbar">
         <a href="index.php" class="top-logo"><span>Telemedicine++</span></a>

@@ -30,6 +30,7 @@ $prescriptions = $stmt->fetchAll();
         table { width: 100%; border-collapse: collapse; } th, td { padding: 15px 10px; text-align: left; font-size: 14px; border-bottom: 1px solid #f1f5f9; }
     </style>
 </head>
+ 
 <body>
     <header class="top-navbar"><div class="top-logo-area"><a href="index.php" class="top-logo">✚ Telemedicine++</a></div></header>
     <aside class="sidebar">

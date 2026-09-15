@@ -16,6 +16,7 @@ try {
     $appointments = [];
 }
 
+
 $monday = date('Y-m-d', strtotime('monday this week'));
 $sunday = date('Y-m-d', strtotime('sunday this week'));
 
@@ -152,6 +153,7 @@ $polygon_points = "0,$chart_height " . $polyline_points . " $chart_width,$chart_
         .view-full-link { display: block; text-align: center; margin-top: 15px; font-size: 13px; color: var(--primary); font-weight: 600; text-decoration: none; }
     </style>
 </head>
+
 <body>
 
     <header class="top-navbar">
